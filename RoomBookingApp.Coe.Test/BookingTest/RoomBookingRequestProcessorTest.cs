@@ -2,6 +2,7 @@
 using Xunit;
 using Shouldly;
 using RoomBookingApp.Core.Models;
+using RoomBookingApp.Core.Processors;
 
 namespace RoomBookingApp.Core.Test.BookingTest
 {

@@ -1,6 +1,6 @@
 ﻿using RoomBookingApp.Core.Models;
 
-namespace RoomBookingApp.Core
+namespace RoomBookingApp.Core.Processors
 {
     public class RoomBookingRequestProcessor
     {
