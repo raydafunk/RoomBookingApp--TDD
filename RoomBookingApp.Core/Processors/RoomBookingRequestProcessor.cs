@@ -4,7 +4,7 @@ namespace RoomBookingApp.Core.Processors
 {
     public class RoomBookingRequestProcessor
     {
-        public RoomBookingRequestProcessor()
+        public RoomBookingRequestProcessor(Services.IRoomBookingService @object)
         {
         }
 
