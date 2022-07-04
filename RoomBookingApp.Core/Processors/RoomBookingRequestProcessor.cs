@@ -14,6 +14,7 @@ namespace RoomBookingApp.Core.Processors
             {
                 throw new ArgumentNullException(nameof(bookingRequest));
             }
+
             return new RoomBookingResult
             {
                 FullName = bookingRequest.FullName,

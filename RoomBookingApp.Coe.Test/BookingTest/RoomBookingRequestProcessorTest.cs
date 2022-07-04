@@ -37,7 +37,7 @@ namespace RoomBookingApp.Core.Test.BookingTest
         [Fact]
         public void Should_Throw_Excecption_For_Null_Request()
         {
-           var  excepetion = Should.Throw<ArgumentNullException>(() => _processor.BookRoom(null));
+           var  excepetion = Should.Throw<ArgumentNullException>(() => _processor.BookRoom(null!));
            excepetion.ParamName.ShouldBe("bookingRequest");
         }
     }
