@@ -8,6 +8,12 @@ namespace RoomBookingApp.Core.Test.BookingTest
 {
     public class RoomBookingRequestProcessorTest
     {
+        private  readonly RoomBookingRequestProcessor _processor;
+
+        public RoomBookingRequestProcessorTest()
+        {
+            _processor = new RoomBookingRequestProcessor();
+        }
         [Fact]
         public void Should_Return_Room_Booking_Reqesponse_with_Request_Values()
         {
@@ -18,15 +24,21 @@ namespace RoomBookingApp.Core.Test.BookingTest
                 Date = new DateTime(2022, 6,4)
             };
 
-            var processor = new RoomBookingRequestProcessor();
 
-            RoomBookingResult result = processor.BookRoom(bookingRequest);
+            RoomBookingResult result = _processor.BookRoom(bookingRequest);
 
             result.ShouldNotBeNull();
             result.FullName.ShouldBe(result.FullName);
             result.Email.ShouldBe(result.Email);
             result.Date.ShouldBe(result.Date);
 
+        }
+
+        [Fact]
+        public void Should_Throw_Excecption_For_Null_Request()
+        {
+           var  excepetion = Should.Throw<ArgumentNullException>(() => _processor.BookRoom(null));
+           excepetion.ParamName.ShouldBe("bookingRequest");
         }
     }
 }
