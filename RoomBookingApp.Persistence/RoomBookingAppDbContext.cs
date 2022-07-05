@@ -11,8 +11,7 @@ namespace RoomBookingApp.Persistence
         }
         public DbSet<Room> Rooms { get; set; }
 
-        public DbSet<RoomBooking> RoomBookings { get; set; } 
-
+        public DbSet<RoomBooking> RoomBookings { get; set; }
         protected  override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

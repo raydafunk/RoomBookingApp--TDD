@@ -40,10 +40,27 @@ namespace RoomBookingApp.Persistence.Test.Services
             Assert.Contains(avaialbleRooms, q => q.Id == 2);
             Assert.Contains(avaialbleRooms, q => q.Id == 3);
             Assert.DoesNotContain(avaialbleRooms, q => q.Id == 4);
-            Assert.Contains(avaialbleRooms, q => q.Name == "Room1");
-            Assert.Contains(avaialbleRooms, q => q.Name == "Room2");
-            Assert.Contains(avaialbleRooms, q => q.Name == "Room3");
-            Assert.DoesNotContain(avaialbleRooms, q => q.Name  == "Room4");
+        }
+
+        [Fact]
+        public void should_Save_Room_Booking()
+        {
+            var dbContextopitons = new DbContextOptionsBuilder<RoomBookingAppDbContext>()
+                .UseInMemoryDatabase("ShouldSaveTest")
+                .Options;
+
+            var rooomBooking = new RoomBooking { RoomId = 1, Date = new DateTime(2021, 06, 09) };
+
+            using var context = new RoomBookingAppDbContext(dbContextopitons);
+            var roomBookingService = new RoomBookingService(context);
+            roomBookingService.Save(rooomBooking);
+
+            var bookings = context.RoomBookings.ToList();
+            var booking = Assert.Single(bookings);
+
+            Assert.Equal(rooomBooking.Date, booking.Date);
+            Assert.Equal(rooomBooking.RoomId, booking.RoomId);
+
         }
     }
 }

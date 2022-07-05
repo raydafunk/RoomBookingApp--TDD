@@ -1,10 +1,5 @@
 ﻿using RoomBookingApp.Core.Domain.Entites;
 using RoomBookingApp.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoomBookingApp.Persistence.Repository
 {
@@ -16,14 +11,17 @@ namespace RoomBookingApp.Persistence.Repository
         {
           this._context = context;
         }
+
         public IEnumerable<Room> GetAvailabeRooms(DateTime date)
         {
-            throw new NotImplementedException();
+            return _context.Rooms.Where(q => !q.Roombookings!.Any(x => x.Date == date)).ToList();
+
         }
 
         public void Save(RoomBooking roomBooking)
         {
-            throw new NotImplementedException();
+            _context.Add(roomBooking);
+            _context.SaveChanges();
         }
     }
 }
