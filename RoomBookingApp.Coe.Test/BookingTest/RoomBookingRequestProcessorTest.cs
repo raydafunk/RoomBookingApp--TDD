@@ -5,10 +5,10 @@ using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Processors;
 using RoomBookingApp.Core.Services;
 using Moq;
-using RoomBookingApp.Core.Domain;
 using System.Collections.Generic;
 using System.Linq;
 using RoomBookingApp.Core.Enums;
+using RoomBookingApp.Core.Domain.Entites;
 
 namespace RoomBookingApp.Core.Test.BookingTest
 {

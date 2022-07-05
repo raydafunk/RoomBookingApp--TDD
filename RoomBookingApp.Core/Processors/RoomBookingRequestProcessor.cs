@@ -1,7 +1,8 @@
-﻿using RoomBookingApp.Core.Domain;
+﻿using RoomBookingApp.Core.Domain.Entites;
 using RoomBookingApp.Core.Enums;
 using RoomBookingApp.Core.Models;
 using RoomBookingApp.Core.Services;
+using RoomBookingApp.Domain.BaseModels;
 
 namespace RoomBookingApp.Core.Processors
 {
