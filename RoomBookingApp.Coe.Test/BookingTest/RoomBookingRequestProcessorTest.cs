@@ -8,6 +8,7 @@ using Moq;
 using RoomBookingApp.Core.Domain;
 using System.Collections.Generic;
 using System.Linq;
+using RoomBookingApp.Core.Enums;
 
 namespace RoomBookingApp.Core.Test.BookingTest
 {
@@ -87,6 +88,20 @@ namespace RoomBookingApp.Core.Test.BookingTest
             _roomBookingServiceMock.Verify(q => q.Save(It.IsAny<RoomBooking>()), Times.Never);
         }
 
+        [Theory]
+        [InlineData(BookingResultFlag.Failure, false)]
+        [InlineData(BookingResultFlag.Success, true)]
+        public void Should_ReturnSuccessFailure_Flag_In_Result(BookingResultFlag bookingSucesssFlag, bool isAvailable)
+        {
+            if (!isAvailable)
+            {
+                _availableRooms.Clear();
+
+            }
+
+            var result = _processor.BookRoom(_bookingRequest);
+            bookingSucesssFlag.ShouldBe(result.Flag);
+        }
 
     }
 }
