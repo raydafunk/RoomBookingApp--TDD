@@ -23,7 +23,10 @@ namespace RoomBookingApp.Core.Processors
 
             if (availabeRoomns.Any())
             {
-                _roomBookingService.Save(CreateRoomBookingObject<RoomBooking>(bookingRequest));
+                var rooms = availabeRoomns.First();
+                var roomBooking = CreateRoomBookingObject<RoomBooking>(bookingRequest);
+                roomBooking.RoomId = rooms.Id;
+                _roomBookingService.Save(roomBooking);
             }
           
 

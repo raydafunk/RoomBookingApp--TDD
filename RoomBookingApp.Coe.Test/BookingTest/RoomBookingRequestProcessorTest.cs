@@ -7,6 +7,7 @@ using RoomBookingApp.Core.Services;
 using Moq;
 using RoomBookingApp.Core.Domain;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RoomBookingApp.Core.Test.BookingTest
 {
@@ -26,7 +27,7 @@ namespace RoomBookingApp.Core.Test.BookingTest
                 Email = "Test@gmail.com",
                 Date = new DateTime(2022, 6, 4)
             };
-            _availableRooms = new List<Room>() { new Room() };
+            _availableRooms = new List<Room>() { new Room() { Id = 1 } };
 
             _roomBookingServiceMock = new Mock<IRoomBookingService>();
             _roomBookingServiceMock.Setup(q => q.GetAvailabeRooms(_bookingRequest.Date))
@@ -75,6 +76,7 @@ namespace RoomBookingApp.Core.Test.BookingTest
             savedBooking.FullName.ShouldBe(savedBooking.FullName);
             savedBooking.Email.ShouldBe(savedBooking.Email);
             savedBooking.Date.ShouldBe(savedBooking.Date);
+            savedBooking.RoomId.ShouldBe(_availableRooms.First().Id);
         }
 
         [Fact]
